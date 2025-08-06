@@ -6,10 +6,12 @@
   {% if cook_list %}
     <ul>
       {% for cook in cook_list %}
-        <li>{{ cook.username }}</li>
+        <li><a href="{% url 'kitchen:cook-detail' pk=cook.id%}">
+          {{ cook.username }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
     <p>There are no Cooks in the service</p>
   {% endif %}
+
 {% endblock %}

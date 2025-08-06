@@ -6,7 +6,8 @@
   {% if ingredient_list %}
     <ul>
       {% for ingredient in ingredient_list %}
-        <li>{{ ingredient.name }}</li>
+        <li><a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">
+          {{ ingredient.name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
