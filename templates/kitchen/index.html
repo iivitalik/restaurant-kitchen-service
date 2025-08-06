@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Home page</title>
+{% endblock %}
+
+
+{% block content %}
+  <h1>Restaurant Service Home</h1>
+  <p>Welcome to the Restaurant Kitchen Service</p>
+  <h3>Restaurant content</h3>
+  <ul>
+    <li>Num dishes: {{ num_dishes }}</li>
+    <li>Num cooks: {{ num_cooks }}</li>
+    <li>Num ingredients: {{ num_ingredients }}</li>
+  </ul>
+{% endblock %}

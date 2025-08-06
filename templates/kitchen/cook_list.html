@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Cooks List</h1>
+
+  {% if cook_list %}
+    <ul>
+      {% for cook in cook_list %}
+        <li>{{ cook.username }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no Cooks in the service</p>
+  {% endif %}
+{% endblock %}
