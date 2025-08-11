@@ -13,4 +13,5 @@
     <li>Num cooks: {{ num_cooks }}</li>
     <li>Num ingredients: {{ num_ingredients }}</li>
   </ul>
+  <p>You have visited this page {{ num_visits }} {%if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 {% endblock %}
