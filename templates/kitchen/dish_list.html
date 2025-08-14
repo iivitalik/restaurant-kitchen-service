@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
 <div class="header-container">
   <h1>Dishes List <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success float-right">+ Add Dish</a></h1>
 </div>
+  <form method="get" action="" class="form-inline">
+  {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔍">
+  </form>
 
 {% if dish_list %}
   <table class="table table-striped">
