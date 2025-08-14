@@ -31,6 +31,7 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
+    ordering = ["name"]
     template_name = "kitchen/dish_type_list.html"
     context_object_name = "dish_type_list"
     paginate_by = 4
@@ -41,6 +42,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     template_name = "kitchen/dish_list.html"
     context_object_name = "dish_list"
     paginate_by = 4
+    ordering = ["name"]
 
     def get_context_data(self, **kwargs):
         context = super(DishListView, self).get_context_data(**kwargs)
@@ -62,6 +64,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     template_name = "kitchen/cook_list.html"
     context_object_name = "cook_list"
     paginate_by = 4
+    ordering = ["id"]
 
 
 class IngredientListView(LoginRequiredMixin, generic.ListView):
@@ -69,6 +72,7 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
     template_name = "kitchen/ingredient_list.html"
     context_object_name = "ingredient_list"
     paginate_by = 4
+    ordering = ["name"]
 
 
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):

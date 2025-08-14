@@ -29,7 +29,7 @@ class Dish(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
