@@ -40,7 +40,6 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchen/dish_list.html"
     context_object_name = "dish_list"
-    queryset = Dish.objects.select_related("dish_type")
     paginate_by = 4
 
     def get_context_data(self, **kwargs):
@@ -52,10 +51,11 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
+        queryset = Dish.objects.select_related("dish_type")
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
-            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
-        return self.queryset
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
+        return queryset
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
