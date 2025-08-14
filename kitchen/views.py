@@ -24,9 +24,9 @@ def index(request: HttpRequest) -> HttpResponse:
         "num_dishes": num_dishes,
         "num_cooks": num_cooks,
         "num_ingredients": num_ingredients,
-        "num_visits": num_visits,  # This was missing
+        "num_visits": num_visits,
     }
-    return render(request, "kitchen/index.html", context=context)
+    return render(request, "home/index.html", context=context)
 
 
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
