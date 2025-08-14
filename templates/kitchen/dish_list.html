@@ -1,17 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Dish List</h1>
+<div class="header-container">
+  <h1>Dishes List <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success float-right">+ Add Dish</a></h1>
+</div>
 
-  {% if dish_list %}
-    <ul>
+{% if dish_list %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for dish in dish_list %}
-<li><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">
-  {{ dish.name }}</a></li>
-
+        <tr>
+          <td>{{ dish.id }}</td>
+          <td>
+            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+          </td>
+          <td>{{ dish.dish_type.name }}</td>
+          <td>
+            <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-sm btn-primary">Update</a>
+            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no Dishes in the service</p>
-  {% endif %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">There are no dishes in the service</div>
+{% endif %}
 {% endblock %}

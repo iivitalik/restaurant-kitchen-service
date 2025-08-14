@@ -1,16 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Ingredients List</h1>
+<div class="header-container">
+  <h1>Ingredients List <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-success float-right">+ Add Ingredient</a></h1>
+</div>
 
-  {% if ingredient_list %}
-    <ul>
+{% if ingredient_list %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for ingredient in ingredient_list %}
-        <li><a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">
-          {{ ingredient.name }}</a></li>
+        <tr>
+          <td>{{ ingredient.id }}</td>
+          <td>
+            <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %}">{{ ingredient.name }}</a>
+          </td>
+          <td>
+            <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-sm btn-primary">Update</a>
+            <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no Ingredients in the service</p>
-  {% endif %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">There are no ingredients in the service</div>
+{% endif %}
 {% endblock %}

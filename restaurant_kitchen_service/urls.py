@@ -24,9 +24,11 @@ from restaurant_kitchen_service import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("kitchen.urls")),
+    path("", views.index, name="index"),
+    path("kitchen/", include("kitchen.urls", namespace="kitchen")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('__debug__/', include(debug_toolbar.urls), name='debug-toolbar'),
 ]
-
 if settings.DEBUG:
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),

@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Cooks List</h1>
+<div class="header-container">
+  <h1>Cooks List <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success float-right">+ Add Cook</a></h1>
+</div>
 
-  {% if cook_list %}
-    <ul>
+{% if cook_list %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for cook in cook_list %}
-        <li><a href="{% url 'kitchen:cook-detail' pk=cook.id%}">
-          {{ cook.username }}</a></li>
+        <tr>
+          <td>{{ cook.id }}</td>
+          <td>
+            <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.username }}</a>
+          </td>
+          <td>
+            <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-sm btn-primary">Update</a>
+            <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no Cooks in the service</p>
-  {% endif %}
-
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">There are no cooks in the service</div>
+{% endif %}
 {% endblock %}

@@ -26,6 +26,19 @@ from kitchen.views import (
     DishDetailView,
     CookDetailView,
     IngredientDetailView,
+    DishTypeCreateView,
+    DishCreateView,
+    CookCreateView,
+    IngredientCreateView,
+    DishTypeUpdateView,
+    DishUpdateView,
+    CookUpdateView,
+    IngredientUpdateView,
+    DishTypeDeleteView,
+    DishDeleteView,
+    CookDeleteView,
+    IngredientDeleteView,
+    CookAdminCreateView,
 
 )
 
@@ -39,6 +52,19 @@ urlpatterns = [
     path("dishes/<int:pk>", DishDetailView.as_view(), name="dish-detail"),
     path("cooks/<int:pk>", CookDetailView.as_view(), name="cook-detail"),
     path("ingredients/<int:pk>", IngredientDetailView.as_view(), name="ingredient-detail"),
+    path("dishtypes/create/", DishTypeCreateView.as_view(), name="dish-type-create"),
+    path("dishes/create/", DishCreateView.as_view(), name="dish-create"),
+    path("cooks/create/", CookCreateView.as_view(), name="cook-create"),
+    path("ingredients/create/", IngredientCreateView.as_view(), name="ingredient-create"),
+    path("dishtypes/<int:pk>/update/", DishTypeUpdateView.as_view(), name="dish-type-update"),
+    path("dishes/<int:pk>/update/", DishUpdateView.as_view(), name="dish-update"),
+    path("cooks/<int:pk>/update/", CookUpdateView.as_view(), name="cook-update"),
+    path("ingredients/<int:pk>/update/", IngredientUpdateView.as_view(), name="ingredient-update"),
+    path("dishtypes/<int:pk>/delete/", DishTypeDeleteView.as_view(), name="dish-type-delete"),
+    path("dishes/<int:pk>/delete/", DishDeleteView.as_view(), name="dish-delete"),
+    path("cooks/<int:pk>/delete/", CookDeleteView.as_view(), name="cook-delete"),
+    path("ingredients/<int:pk>/delete/", IngredientDeleteView.as_view(), name="ingredient-delete"),
+    path("cookadmin/create", CookAdminCreateView.as_view, name="cookadmin-create"),
 ]
 
 
