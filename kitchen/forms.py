@@ -13,11 +13,11 @@ class CookAdminCreationForm(UserCreationForm):
         model = Cook
         fields = UserCreationForm.Meta.fields + ("years_of_experience",)
 
-        def clean_username(self):
-            years_of_experience = self.cleaned_data["years_of_experience"]
-            if years_of_experience <= 0:
-                raise ValidationError("Please enter a positive integer")
-            return years_of_experience
+    def clean_years_of_experience(self):
+        years_of_experience = self.cleaned_data["years_of_experience"]
+        if years_of_experience <= 0:
+            raise ValidationError("Please enter a positive integer")
+        return years_of_experience
 
 
 class DishSearchForm(forms.Form):
