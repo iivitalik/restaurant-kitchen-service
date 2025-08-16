@@ -1,35 +1,69 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Cooks List {% endblock title %}
+
+{% block body_class %} cooks-list {% endblock body_class %}
+
+{% block hero %}
+<header class="header-2">
+  <div class="page-header min-vh-75 relative" style="background-image: url('{% static 'background.jpg' %}')">
+    <span class="mask bg-gradient-primary opacity-4"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 text-center mx-auto">
+          <h1 class="text-white pt-3 mt-n5">Cooks</h1>
+          <p class="lead text-white mt-3">All registered cooks in the system</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock hero %}
 
 {% block content %}
-<div class="header-container">
-  <h1>Cooks List <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success float-right">+ Add Cook</a></h1>
-</div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Cooks</h2>
+    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success">+ Add Cook</a>
+  </div>
 
-{% if cook_list %}
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for cook in cook_list %}
-        <tr>
-          <td>{{ cook.id }}</td>
-          <td>
-            <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.username }}</a>
-          </td>
-          <td>
-            <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-sm btn-primary">Update</a>
-            <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-sm btn-danger">Delete</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-  <div class="alert alert-info">There are no cooks in the service</div>
-{% endif %}
-{% endblock %}
+  {% if cook_list %}
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cook in cook_list %}
+              <tr>
+                <td class="ps-4">
+                  <p class="text-xs font-weight-bold mb-0">{{ cook.id }}</p>
+                </td>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">
+                        <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.username }}</a>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td class="align-middle">
+                  <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-sm btn-primary me-2">Update</a>
+                  <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info">There are no cooks in the service</div>
+  {% endif %}
+{% endblock content %}

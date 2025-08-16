@@ -1,42 +1,72 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
+{% load static %}
+
+{% block body_class %} dish-list-page {% endblock %}
+
+{% block hero %}
+<div class="page-header min-vh-75 relative" style="background-image: url('{% static 'assets/img/background.png' %}'); background-size: cover; background-position: center;">
+  <span class="mask bg-gradient-dark opacity-6"></span>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center text-white">
+        <h1 class="text-white">Dishes List</h1>
+        <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success mt-3">+ Add Dish</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 
 {% block content %}
-<div class="header-container">
-  <h1>Dishes List <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success float-right">+ Add Dish</a></h1>
-</div>
-  <form method="get" action="" class="form-inline">
-  {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit" value="🔍">
-  </form>
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+  <div class="container">
+    <form method="get" action="" class="form-inline mb-4">
+      {{ search_form|crispy }}
+      <input class="btn btn-secondary ml-2" type="submit" value="🔍">
+    </form>
 
-{% if dish_list %}
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for dish in dish_list %}
-        <tr>
-          <td>{{ dish.id }}</td>
-          <td>
-            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-          </td>
-          <td>{{ dish.dish_type.name }}</td>
-          <td>
-            <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-sm btn-primary">Update</a>
-            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-sm btn-danger">Delete</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-  <div class="alert alert-info">There are no dishes in the service</div>
-{% endif %}
+    {% if dish_list %}
+    <div class="table-responsive">
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xs font-weight-bolder">ID</th>
+            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Name</th>
+            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Type</th>
+            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dish in dish_list %}
+          <tr>
+            <td class="ps-4">
+              <p class="text-xs font-weight-bold mb-0">{{ dish.id }}</p>
+            </td>
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">
+                    <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+                  </h6>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-xs font-weight-bold mb-0">{{ dish.dish_type.name }}</p>
+            </td>
+            <td class="align-middle">
+              <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-sm btn-primary me-2">Update</a>
+              <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">There are no dishes in the service</div>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
