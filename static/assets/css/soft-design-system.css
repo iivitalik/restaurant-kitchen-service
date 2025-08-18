@@ -3062,6 +3062,14 @@ textarea.form-control-lg {
   .navbar-nav .dropdown-menu {
     position: static; }
 
+  .navbar a,
+  .navbar span {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+
 .navbar-text {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
@@ -14103,5 +14111,6 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help; }
+
 
 /*# sourceMappingURL=soft-design-system.css.map */

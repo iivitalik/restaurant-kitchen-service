@@ -17,7 +17,6 @@ def index(request: HttpRequest) -> HttpResponse:
     num_dishes = Dish.objects.count()
     num_cooks = Cook.objects.count()
     num_ingredients = Ingredient.objects.count()
-    num_dishtypes = DishType.objects.count()
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
 
