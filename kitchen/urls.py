@@ -48,10 +48,10 @@ urlpatterns = [
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
     path("ingredients/", IngredientListView.as_view(), name="ingredient-list"),
-    path("dishtypes/<int:pk>", DishTypeDetailView.as_view(), name="dish-type-detail"),
-    path("dishes/<int:pk>", DishDetailView.as_view(), name="dish-detail"),
-    path("cooks/<int:pk>", CookDetailView.as_view(), name="cook-detail"),
-    path("ingredients/<int:pk>", IngredientDetailView.as_view(), name="ingredient-detail"),
+    path("dishtypes/<int:pk>/", DishTypeDetailView.as_view(), name="dish-type-detail"),
+    path("dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
+    path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
+    path("ingredients/<int:pk>/", IngredientDetailView.as_view(), name="ingredient-detail"),  # Added slash here
     path("dishtypes/create/", DishTypeCreateView.as_view(), name="dish-type-create"),
     path("dishes/create/", DishCreateView.as_view(), name="dish-create"),
     path("cooks/create/", CookCreateView.as_view(), name="cook-create"),
@@ -64,7 +64,7 @@ urlpatterns = [
     path("dishes/<int:pk>/delete/", DishDeleteView.as_view(), name="dish-delete"),
     path("cooks/<int:pk>/delete/", CookDeleteView.as_view(), name="cook-delete"),
     path("ingredients/<int:pk>/delete/", IngredientDeleteView.as_view(), name="ingredient-delete"),
-    path("cookadmin/create", CookAdminCreateView.as_view, name="cookadmin-create"),
+    path("cookadmin/create/", CookAdminCreateView.as_view, name="cookadmin-create"),
 ]
 
 
