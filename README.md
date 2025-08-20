@@ -10,6 +10,8 @@ Django project for managing dishes, dish types and ingredients in Restaurant.
 - **Quick Filtering** – Sort dishes by dish type for better menu planning
 
 # Check it out
+#### [Kitchen project deployed to Render](https://restaurant-kitchen-service-njiu.onrender.com)
+
 
 ## Installation 
 
