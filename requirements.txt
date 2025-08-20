@@ -19,6 +19,7 @@ packaging==25.0
 parso==0.8.4
 pluggy==1.6.0
 prompt_toolkit==3.0.51
+psycopg2-binary==2.9.10
 pure_eval==0.2.3
 Pygments==2.19.2
 pytest==8.4.1
@@ -31,3 +32,4 @@ traitlets==5.14.3
 typing_extensions==4.14.1
 tzdata==2025.2
 wcwidth==0.2.13
+whitenoise==6.9.0
