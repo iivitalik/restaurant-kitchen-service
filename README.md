@@ -12,6 +12,10 @@ Django project for managing dishes, dish types and ingredients in Restaurant.
 # Check it out
 #### [Kitchen project deployed to Render](https://restaurant-kitchen-service-njiu.onrender.com)
 
+## Login
+* ###### login: user
+
+* ###### password: user123456
 
 ## Installation 
 
