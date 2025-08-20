@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 from kitchen import views
-from kitchen.views import DishTypeListView
 from restaurant_kitchen_service import settings
 
 urlpatterns = [
@@ -29,6 +28,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('__debug__/', include(debug_toolbar.urls), name='debug-toolbar'),
 ]
+
 if settings.DEBUG:
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
