@@ -71,7 +71,7 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
     model = Ingredient
     template_name = "kitchen/ingredient_list.html"
     context_object_name = "ingredient_list"
-    paginate_by = 4
+    paginate_by = 8
     ordering = ["name"]
 
 
