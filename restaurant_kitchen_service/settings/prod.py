@@ -5,8 +5,11 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-
+ALLOWED_HOSTS = [
+    "restaurant-kitchen-service-njiu.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
