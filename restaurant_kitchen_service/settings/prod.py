@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "restaurant-kitchen-service-njiu.onrender.com",
